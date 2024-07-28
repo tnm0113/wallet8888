@@ -36,7 +36,7 @@ async function generate() {
             console.log("substrate ", substrateAddress)
             if (isMatchWith(substrateAddress)){
                 console.log("**************FOUND SUBSTRATE****************")
-                appendFileSync("result_substrate.txt", substrateWallet.address )
+                appendFileSync("result_substrate.txt", substrateWallet.address + "\n" )
                 appendFileSync("result_substrate.txt", mnemonic + "\n")
             }
         }
