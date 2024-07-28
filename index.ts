@@ -32,6 +32,7 @@ async function generate() {
             const keyring = new Keyring({type: 'sr25519'});
             const substrateWallet = keyring.createFromUri(`${mnemonic}`);
             let substrateAddress = substrateWallet.address
+            console.log("substrate ", substrateAddress)
             if (isMatchWith(substrateAddress)){
                 appendFile("./result_substrate.txt", substrateAddress + "\n", err => {
                     if (err){
@@ -49,6 +50,7 @@ async function generate() {
         if (process.env.EVM_ENABLE) {
             let etherWallet = HDNodeWallet.fromPhrase(mnemonic);
             let evmAddress = etherWallet.address;
+            console.log("evm ", evmAddress)
             if (isMatchWith(evmAddress)){
                 appendFile("./result_evm.txt", evmAddress + "\n", err => {
                     if (err){
