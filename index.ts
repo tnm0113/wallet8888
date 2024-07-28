@@ -1,7 +1,7 @@
 import { Keyring } from "@polkadot/keyring"
 import { cryptoWaitReady, mnemonicGenerate } from "@polkadot/util-crypto"
 import { HDNodeWallet } from "ethers";
-import { appendFile } from "node:fs";
+import { appendFileSync } from "node:fs";
 import 'dotenv/config';
 
 function sleep(ms: number){
@@ -36,16 +36,8 @@ async function generate() {
             console.log("substrate ", substrateAddress)
             if (isMatchWith(substrateAddress)){
                 console.log("**************FOUND SUBSTRATE****************")
-                appendFile("./result_substrate.txt", substrateAddress + "\n", err => {
-                    if (err){
-                        console.log(err)
-                    }
-                })
-                appendFile("./result_substrate.txt", mnemonic + "\n", err => {
-                    if (err){
-                        console.log(err)
-                    }
-                })
+                appendFileSync("result_substrate.txt", substrateWallet.address )
+                appendFileSync("result_substrate.txt", mnemonic + "\n")
             }
         }
 
@@ -55,16 +47,8 @@ async function generate() {
             console.log("evm ", evmAddress)
             if (isMatchWith(evmAddress)){
                 console.log("**************FOUND EVM****************")
-                appendFile("./result_evm.txt", evmAddress + "\n", err => {
-                    if (err){
-                        console.log(err)
-                    }
-                })
-                appendFile("./result_evm.txt", mnemonic + "\n", err => {
-                    if (err){
-                        console.log(err)
-                    }
-                })
+                appendFileSync("result_evm.txt", etherWallet.address + "\n")
+                appendFileSync("result_evm.txt", mnemonic + "\n")
             }
         }
     }
