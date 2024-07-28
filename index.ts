@@ -10,8 +10,9 @@ function sleep(ms: number){
 
 function isMatchWith(address: string){
     if (process.env.POSTFIXS){
-        for (let index = 0; index < process.env.POSTFIXS.length; index++) {
-            const postfix = process.env.POSTFIXS[index];
+        let postfixs = process.env.POSTFIXS.split(" ");
+        for (let index = 0; index < postfixs.length; index++) {
+            const postfix = postfixs[index];
             if (address.endsWith(postfix)){
                 return true
             }
@@ -34,6 +35,7 @@ async function generate() {
             let substrateAddress = substrateWallet.address
             console.log("substrate ", substrateAddress)
             if (isMatchWith(substrateAddress)){
+                console.log("**************FOUND SUBSTRATE****************")
                 appendFile("./result_substrate.txt", substrateAddress + "\n", err => {
                     if (err){
                         console.log(err)
@@ -52,6 +54,7 @@ async function generate() {
             let evmAddress = etherWallet.address;
             console.log("evm ", evmAddress)
             if (isMatchWith(evmAddress)){
+                console.log("**************FOUND EVM****************")
                 appendFile("./result_evm.txt", evmAddress + "\n", err => {
                     if (err){
                         console.log(err)
