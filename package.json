@@ -1,0 +1,22 @@
+{
+  "name": "wallet8888",
+  "version": "1.0.0",
+  "description": "program generate wallet with nice address",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
+  },
+  "keywords": [
+    "wallet"
+  ],
+  "author": "tnm0113",
+  "license": "ISC",
+  "dependencies": {
+    "@polkadot/keyring": "^13.0.2",
+    "@polkadot/util-crypto": "^13.0.2",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "typescript": "^5.5.4"
+  }
+}
