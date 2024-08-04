@@ -13,6 +13,7 @@
   "author": "tnm0113",
   "license": "ISC",
   "dependencies": {
+    "@aptos-labs/ts-sdk": "^1.26.0",
     "@polkadot/keyring": "^13.0.2",
     "@polkadot/util-crypto": "^13.0.2",
     "dotenv": "^16.4.5",

@@ -2,6 +2,7 @@ import { Keyring } from "@polkadot/keyring"
 import { cryptoWaitReady, mnemonicGenerate } from "@polkadot/util-crypto"
 import { HDNodeWallet } from "ethers";
 import { appendFileSync } from "node:fs";
+import { Account } from "@aptos-labs/ts-sdk";
 import 'dotenv/config';
 
 function sleep(ms: number){
@@ -48,6 +49,18 @@ async function generate() {
             if (isMatchWith(evmAddress)){
                 console.log("**************FOUND EVM****************")
                 appendFileSync("result_evm.txt", etherWallet.address + "\n")
+                appendFileSync("result_evm.txt", mnemonic + "\n")
+            }
+        }
+
+        if (process.env.APTOS_ENABLE) {
+            const path = "m/44'/637'/0'/0'/0";
+            const account = Account.fromDerivationPath({ path, mnemonic });
+            let address = account.accountAddress.toString();
+            console.log("evm ", address)
+            if (isMatchWith(address)){
+                console.log("**************FOUND APTOS****************")
+                appendFileSync("result_evm.txt", address + "\n")
                 appendFileSync("result_evm.txt", mnemonic + "\n")
             }
         }
