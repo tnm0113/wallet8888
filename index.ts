@@ -30,6 +30,8 @@ async function generate() {
 
         const mnemonic = mnemonicGenerate();
 
+        const seperate = "==========================================="
+
         if (process.env.SS58_ENABLE){
             const keyring = new Keyring({type: 'sr25519'});
             const substrateWallet = keyring.createFromUri(`${mnemonic}`);
@@ -37,6 +39,7 @@ async function generate() {
             console.log("substrate ", substrateAddress)
             if (isMatchWith(substrateAddress)){
                 console.log("**************FOUND SUBSTRATE****************")
+                appendFileSync("result_substrate.txt", seperate + "\n" )
                 appendFileSync("result_substrate.txt", substrateWallet.address + "\n" )
                 appendFileSync("result_substrate.txt", mnemonic + "\n")
             }
@@ -48,6 +51,7 @@ async function generate() {
             console.log("evm ", evmAddress)
             if (isMatchWith(evmAddress)){
                 console.log("**************FOUND EVM****************")
+                appendFileSync("result_substrate.txt", seperate + "\n" )
                 appendFileSync("result_evm.txt", etherWallet.address + "\n")
                 appendFileSync("result_evm.txt", mnemonic + "\n")
             }
@@ -60,6 +64,7 @@ async function generate() {
             console.log("evm ", address)
             if (isMatchWith(address)){
                 console.log("**************FOUND APTOS****************")
+                appendFileSync("result_substrate.txt", seperate + "\n" )
                 appendFileSync("result_evm.txt", address + "\n")
                 appendFileSync("result_evm.txt", mnemonic + "\n")
             }
