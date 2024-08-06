@@ -51,7 +51,7 @@ async function generate() {
             console.log("evm ", evmAddress)
             if (isMatchWith(evmAddress)){
                 console.log("**************FOUND EVM****************")
-                appendFileSync("result_substrate.txt", seperate + "\n" )
+                appendFileSync("result_evm.txt", seperate + "\n" )
                 appendFileSync("result_evm.txt", etherWallet.address + "\n")
                 appendFileSync("result_evm.txt", mnemonic + "\n")
             }
@@ -64,9 +64,9 @@ async function generate() {
             console.log("evm ", address)
             if (isMatchWith(address)){
                 console.log("**************FOUND APTOS****************")
-                appendFileSync("result_substrate.txt", seperate + "\n" )
-                appendFileSync("result_evm.txt", address + "\n")
-                appendFileSync("result_evm.txt", mnemonic + "\n")
+                appendFileSync("result_apt.txt", seperate + "\n" )
+                appendFileSync("result_apt.txt", address + "\n")
+                appendFileSync("result_apt.txt", mnemonic + "\n")
             }
         }
     }
